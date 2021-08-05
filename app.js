@@ -8,8 +8,8 @@ mongoose.connect(URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-// mongoose.connection.on("Connected", console.log("Connected"))
-// mongoose.connection.on("Error",(error) => console.log(`Error: ${error.message}`))
+mongoose.connection.on("Connected", console.log("Connected"))
+mongoose.connection.on("Error",(error) => console.log(`Error: ${error.message}`))
 
 const port = 5000;
 const app = express();
