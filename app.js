@@ -3,6 +3,14 @@ const express = require("express");
 const { get, request } = require("http");
 const mongoose = require("mongoose");
 
+const URL = "mongodb+srv://admin:<admin>@clusterlearning.wfsa1.mongodb.net/practise";
+mongoose.connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+// mongoose.connection.on("Connected", console.log("Connected"))
+// mongoose.connection.on("Error",(error) => console.log(`Error: ${error.message}`))
+
 const port = 5000;
 const app = express();
 
