@@ -1,14 +1,32 @@
 const { response } = require("express");
 const express = require("express");
-const { get } = require("http");
+const { get, request } = require("http");
 const mongoose = require("mongoose");
 
 const port = 5000;
 const app = express();
 
-app.get("/",(request,response) => {
+// Middleware 
+app.use("/", (request, response, next) => {
+    const user = true;
+    if (user) {
+        console.log("user login");
+        next();
+    } else {
+        response.send("user is logout");
+        console.log("user is logout");
+    }
+})
+
+// Simple API
+app.get("/", (request, response) => {
+    response.send("login status")
+
+});
+
+app.get("/home", (request, response) => {
     response.send("you are in home page")
-    
+
 });
 
 
@@ -24,5 +42,4 @@ app.get("/",(request,response) => {
 
 
 
-
-app.listen(port , () => console.log(`server start ${port}`));
+app.listen(port, () => console.log(`server start ${port}`));
